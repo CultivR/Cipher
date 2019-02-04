@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1788111E1EE77A020050B7B3 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A2E4131EDF70FD002228DD /* Coding.swift */; };
 		17A2E40D1EDF70A0002228DD /* Cipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A2E40B1EDF70A0002228DD /* Cipher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17DAC4772209029D00B3B90D /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAC4762209029D00B3B90D /* Nib.swift */; };
+		17DAC479220902A400B3B90D /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAC478220902A400B3B90D /* Bundle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		17A2E40B1EDF70A0002228DD /* Cipher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cipher.h; sourceTree = "<group>"; };
 		17A2E40C1EDF70A0002228DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17A2E4131EDF70FD002228DD /* Coding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
+		17DAC4762209029D00B3B90D /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
+		17DAC478220902A400B3B90D /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +52,9 @@
 		17A2E40A1EDF70A0002228DD /* Cipher */ = {
 			isa = PBXGroup;
 			children = (
+				17DAC478220902A400B3B90D /* Bundle.swift */,
 				17A2E4131EDF70FD002228DD /* Coding.swift */,
+				17DAC4762209029D00B3B90D /* Nib.swift */,
 				17A2E40B1EDF70A0002228DD /* Cipher.h */,
 				17A2E40C1EDF70A0002228DD /* Info.plist */,
 			);
@@ -135,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17DAC479220902A400B3B90D /* Bundle.swift in Sources */,
+				17DAC4772209029D00B3B90D /* Nib.swift in Sources */,
 				1788111E1EE77A020050B7B3 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
