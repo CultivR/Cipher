@@ -31,7 +31,7 @@ public extension NSCoding where Self: NSObject {
     }
     
     func decodeProperties(from coder: NSCoder, manuallyDecode: () -> Void = {}) {
-        guard coder is NSKeyedUnarchiver, !Bundle.main.isInterfaceBuilder else { return }
+        guard coder is NSKeyedUnarchiver, !isTargetInterfaceBuilder else { return }
         properties.forEach { key, _ in
             if let value = coder.decodeObject(forKey: key) {
                 setValue(value, forKey: key)
@@ -41,7 +41,7 @@ public extension NSCoding where Self: NSObject {
     }
     
     func encodeProperties(with coder: NSCoder, manuallyEncode: () -> Void = {}) {
-        guard !Bundle.main.isInterfaceBuilder else { return }
+        guard !isTargetInterfaceBuilder else { return }
         properties.forEach { key, value in
             if self.value(forKey: key) != nil {
                 coder.encode(value, forKey: key)
@@ -65,9 +65,16 @@ private extension NSCoding where Self: NSObject {
         var mirror: Mirror? = Mirror(reflecting: self)
         var propertyKeys: [String] = []
         while mirror != nil {
-            propertyKeys += mirror!.children.compactMap { $0.label }.filter { !$0.contains(".") }
+            propertyKeys += mirror!.children
+                .flatMap { $0.label }
+                .filter { !$0.contains(".") }
             mirror = mirror?.superclassMirror
         }
         return propertyKeys.map { ($0, value(forKey: $0)) }
     }
+}
+
+private var isTargetInterfaceBuilder: Bool {
+    guard let identifier = Bundle.main.bundleIdentifier else { return true }
+    return identifier.range(of: "com.apple") != nil
 }
