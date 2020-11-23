@@ -43,7 +43,7 @@ public extension NSCoding where Self: NSObject {
     func encodeProperties(with coder: NSCoder, manuallyEncode: () -> Void = {}) {
         guard !isTargetInterfaceBuilder else { return }
         properties.forEach { key, value in
-            if self.value(forKey: key) != nil {
+            if responds(to: Selector(key)) && self.value(forKey: key) != nil {
                 coder.encode(value, forKey: key)
             }
         }
@@ -70,7 +70,13 @@ private extension NSCoding where Self: NSObject {
                 .filter { !$0.contains(".") }
             mirror = mirror?.superclassMirror
         }
-        return propertyKeys.map { ($0, value(forKey: $0)) }
+        
+        return propertyKeys.map {
+            if responds(to: Selector($0)) {
+                return ($0, value(forKey: $0))
+            }
+            return ($0, nil)
+        }
     }
 }
 
